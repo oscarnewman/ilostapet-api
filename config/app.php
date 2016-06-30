@@ -164,6 +164,8 @@ return [
          */
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Approached\LaravelImageOptimizer\ServiceProvider::class,
 
     ],
 
@@ -212,7 +214,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'API' => Dingo\Api\Facade\API::class,
         'APIRoute' => Dingo\Api\Facade\Route::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'Intervention' => Intervention\Image\Facades\Image::class,
 
     ],
 

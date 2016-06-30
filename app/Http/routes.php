@@ -35,4 +35,7 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\Api\v1'], function ($a
     $api->put('/sessions', 'SessionController@update');
     $api->patch('/sessions', 'SessionController@update');
     $api->get('/sessions/current', 'SessionController@current');
+
+    $api->post('/images', 'ImageController@store');
+    $api->delete('/images/{id}', 'ImageController@destroy');
 });

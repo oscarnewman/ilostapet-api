@@ -29,6 +29,8 @@
     25 => 'App\\Providers\\FractalServiceProvider',
     26 => 'Dingo\\Api\\Provider\\LaravelServiceProvider',
     27 => 'Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider',
+    28 => 'Intervention\\Image\\ImageServiceProvider',
+    29 => 'Approached\\LaravelImageOptimizer\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -48,6 +50,8 @@
     13 => 'App\\Providers\\FractalServiceProvider',
     14 => 'Dingo\\Api\\Provider\\LaravelServiceProvider',
     15 => 'Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider',
+    16 => 'Intervention\\Image\\ImageServiceProvider',
+    17 => 'Approached\\LaravelImageOptimizer\\ServiceProvider',
   ),
   'deferred' => 
   array (

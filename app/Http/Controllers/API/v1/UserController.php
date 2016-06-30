@@ -51,9 +51,11 @@ class UserController extends BaseAPIController
      */
     public function show(Request $request, $id)
     {
-        if(! $user = User::find($id)) {
+        $user = User::hashID($id, function() {
             return $this->response->errorNotFound();
-        } else if ($user->id != $this->auth->user()->id) {
+        });
+
+        if ($user->id != $this->auth->user()->id) {
             return $this->response->errorUnauthorized();
         }
         return $this->response->item($user, new UserTransformer, ['key' => 'user']);
@@ -78,9 +80,11 @@ class UserController extends BaseAPIController
             $input['password'] = Hash::make($request->input('password'));
         }
 
-        if(! $user = User::find($id)) {
+        $user = User::hashID($id, function() {
             return $this->response->errorNotFound();
-        } else if ($user->id != $this->auth->user()->id) {
+        });
+
+        if ($user->id != $this->auth->user()->id) {
             return $this->response->errorUnauthorized();
         }
 

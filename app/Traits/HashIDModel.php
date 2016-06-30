@@ -20,18 +20,25 @@ trait HashIDModel
      *
      * @param  \Illuminate\Database\Schema\Builder $query The Query Builder instance.
      * @param  string                              $hash_id  The hash id of the model.
-     * @param  bool|true                           $first Returns the model by default, or set to `false` to chain for query builder.
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Builder
      */
-    public function scopeHashID($query, $hash_id, $first = true)
+    public function scopeHashID($query, $hash_id, $failure = null)
     {
         $optimus = new Optimus(env('OPTIMUS_PRIME'), env('OPTIMUS_INVERSE'), env('OPTIMUS_SPARK'));
 
         if (!is_numeric($hash_id)) {
-            throw (new ModelNotFoundException)->setModel(get_class($this));
+            if(is_callable($failure)){
+                $failure();
+            }
         }
+
         $id = $optimus->decode($hash_id);
-        return $query->find($id);
+        if(!$post = $query->find($id)) {
+            if(is_callable($failure)){
+                $failure();
+            }
+        }
+        return $post;
     }
 
     /**

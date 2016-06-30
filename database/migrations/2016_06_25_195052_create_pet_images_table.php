@@ -15,8 +15,8 @@ class CreatePetImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('post_id')->unsigned()->nullable();
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->integer('pet_id')->unsigned()->nullable();
+            $table->foreign('pet_id')->references('id')->on('pets')->onDelete('cascade');
 
             $table->string('image_url');
             $table->string('storage_path');

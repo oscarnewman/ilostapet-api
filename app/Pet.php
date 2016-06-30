@@ -34,4 +34,8 @@ class Pet extends Model
     public function post() {
         return $this->hasOne(Post::class);
     }
+
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
 }

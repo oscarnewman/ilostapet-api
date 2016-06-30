@@ -34,7 +34,7 @@ class Post extends Model
      * @var array
      */
     protected $hidden = [
-
+        
     ];
 
     public function pet() {
@@ -43,6 +43,10 @@ class Post extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function contactInfo() {
+        return $this->hasMany(ContactInfo::class);
     }
 
 }
