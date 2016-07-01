@@ -7,6 +7,16 @@ use League\Fractal\TransformerAbstract;
 
 class PetTransformer extends TransformerAbstract
 {
+
+    /**
+     * List of resources possible to include
+     *
+     * @var array
+     */
+    protected $defaultIncludes = [
+        'images',
+    ];
+
     /**
      * Turn this item object into a generic array
      *
@@ -26,13 +36,17 @@ class PetTransformer extends TransformerAbstract
             'has_microchip' => (bool) $pet->has_microchip,
             'created_at'    => (string) $pet->created_at,
             'updated_at'    => (string) $pet->updated_at,
-            'links'   => [
-                [
-                    'rel' => 'self',
-                    'uri' => route('api.pets.show', ['id' => $pet->hash_id]),
-                ]
-            ],
         ];
+    }
+
+    /**
+     * Include Images
+     * @return Leage\Fractal\ItemResource
+     */
+    public function includeImages(Pet $pet) {
+        $images = $pet->images;
+
+        return $this->collection($images, new ImageTransformer());
     }
 
 }

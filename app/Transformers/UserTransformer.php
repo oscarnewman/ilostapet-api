@@ -20,12 +20,6 @@ class UserTransformer extends TransformerAbstract
             'email'     => $user->email,
             'created_at'    => (string) $user->created_at,
             'updated_at'    => (string) $user->updated_at,
-            'links'   => [
-                [
-                    'rel' => 'self',
-                    'uri' => route('api.users.show', ['id' => $user->hash_id]),
-                ]
-            ],
         ];
     }
 

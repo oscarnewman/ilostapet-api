@@ -12,6 +12,7 @@ use App\Http\Controllers\API\v1\BaseAPIController;
 use App\Transformers\PetTransformer;
 
 use App\Pet;
+use App\Image;
 
 class PetController extends BaseAPIController
 {
@@ -58,6 +59,13 @@ class PetController extends BaseAPIController
             return $this->response->errorInternal('Could not create post. Please try again.');
         }
 
+        if ($request->has('queued_images')) {
+            $queued_images = $request->get('queued_images');
+            foreach($queued_images as $queued) {
+                $pet->images()->save(Image::hashID($queued));
+            }
+        }
+
         return $this->response->created(route('api.pets.show', ['id' => $pet->hash_id]));
     }
 
@@ -102,6 +110,18 @@ class PetController extends BaseAPIController
         ];
 
         $pet->update($pet_data);
+
+        if ($request->has('queued_images')) {
+            $pet->images->map(function($item, $key) {
+                $image->deleteS3();
+                $image->delete();
+            });
+
+            $queued_images = $request->get('queued_images');
+            foreach($queued_images as $queued) {
+                $pet->images()->save(Image::hashID($queued));
+            }
+        }
 
         return $this->response->created(route('api.pets.show', ['id' => $pet->hash_id]));
     }

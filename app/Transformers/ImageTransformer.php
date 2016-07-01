@@ -16,7 +16,7 @@ class ImageTransformer extends TransformerAbstract
     {
         return [
             'id'            => (int) $image->hash_id,
-            'post_id'       => $image->post_id,
+            'pet_id'       => $image->post_id,
             'image_url'     => $image->image_url,
             'storage_path'  => $image->storage_path,
             'width'         => (int) $image->width,

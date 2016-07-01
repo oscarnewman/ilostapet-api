@@ -3,7 +3,9 @@
 namespace App\Transformers;
 
 use App\Post;
+use App\ContactInfo;
 use League\Fractal\TransformerAbstract;
+
 
 class PostTransformer extends TransformerAbstract
 {
@@ -13,7 +15,8 @@ class PostTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
-        'pet'
+        'pet',
+        'contactInfo'
     ];
 
     /**
@@ -33,12 +36,6 @@ class PostTransformer extends TransformerAbstract
             ],
             'created_at'    => (string) $post->created_at,
             'updated_at'    => (string) $post->updated_at,
-            'links'   => [
-                [
-                    'rel' => 'self',
-                    'uri' => route('api.posts.show', ['id' => $post->hash_id]),
-                ]
-            ],
         ];
     }
 
@@ -53,5 +50,17 @@ class PostTransformer extends TransformerAbstract
 
         return $this->item($pet, new PetTransformer, 'pet');
     }
+
+    /**
+     * Include Contact Info
+     * @return Leage\Fractal\ItemResource
+     */
+    public function includeContactInfo(Post $post) {
+        $contact_info = $post->contactInfo;
+
+        return $this->collection($contact_info, new ContactInfoTransformer());
+    }
+
+
 
 }

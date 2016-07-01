@@ -14,6 +14,7 @@ use App\Transformers\PostTransformer;
 
 use App\Post;
 use App\Pet;
+use App\Image;
 
 class PostController extends BaseAPIController
 {
@@ -82,7 +83,7 @@ class PostController extends BaseAPIController
         if ($request->has('queued_images')) {
             $queued_images = $request->get('queued_images');
             foreach($queued_images as $queued) {
-                $post->pet->images()->attach(Image::hashID($queued));
+                $post->pet->images()->save(Image::hashID($queued));
             }
         }
 
@@ -166,7 +167,7 @@ class PostController extends BaseAPIController
 
             $queued_images = $request->get('queued_images');
             foreach($queued_images as $queued) {
-                $post->pet->images()->attach(Image::hashID($queued));
+                $post->pet->images()->save(Image::hashID($queued));
             }
         }
 

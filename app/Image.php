@@ -60,7 +60,7 @@ class Image extends Model
 
         //input a row into the database to track the image (if needed)
         $image = new Image([
-            'post_id'       => NULL,
+            'pet_id'       => NULL,
             'image_url'     => self::url($image_path),
             'storage_path'  => $image_path,
             'width'         => $image_file->width(),

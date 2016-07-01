@@ -34,7 +34,7 @@ class Post extends Model
      * @var array
      */
     protected $hidden = [
-        
+
     ];
 
     public function pet() {

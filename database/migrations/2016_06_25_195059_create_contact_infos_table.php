@@ -15,6 +15,9 @@ class CreateContactInfosTable extends Migration
         Schema::create('contact_info', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->integer('post_id')->unsigned()->nullable();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+
             $table->string('value');
             $table->timestamps();
         });
