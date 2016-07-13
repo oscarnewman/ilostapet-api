@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "ilostapet-api",
+    "description": "API for ilostapet.",
+    "keywords": ["ilostapet", "ilap"],
     "license": "MIT",
     "type": "project",
     "minimum-stability": "dev",
