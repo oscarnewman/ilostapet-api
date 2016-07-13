@@ -165,7 +165,6 @@ return [
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Approached\LaravelImageOptimizer\ServiceProvider::class,
 
     ],
 
