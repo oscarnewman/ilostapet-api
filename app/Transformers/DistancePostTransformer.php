@@ -41,7 +41,7 @@ class DistancePostTransformer extends TransformerAbstract
     {
         $post = Post::find($result->post_id);
 
-        return $this->item($post, new PostTransformer, 'post');
+        return $this->item($post, new PostTransformer);
     }
 
 }

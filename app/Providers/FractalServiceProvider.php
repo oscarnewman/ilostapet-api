@@ -27,7 +27,8 @@ class FractalServiceProvider extends ServiceProvider
             $fractal = new \League\Fractal\Manager;
 
             // $serializer = new \League\Fractal\Serializer\JsonApiSerializer(env('API_DOMAIN'));
-            $serializer = new \League\Fractal\Serializer\ArraySerializer(env('API_DOMAIN'));
+            // $serializer = new \League\Fractal\Serializer\ArraySerializer(env('API_DOMAIN'));
+            $serializer = new \App\Serializers\NoDataArraySerializer(env('API_DOMAIN'));
 
             $fractal->setSerializer($serializer);
 

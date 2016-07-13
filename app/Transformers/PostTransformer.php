@@ -48,7 +48,7 @@ class PostTransformer extends TransformerAbstract
     {
         $pet = $post->pet;
 
-        return $this->item($pet, new PetTransformer, 'pet');
+        return $this->item($pet, new PetTransformer);
     }
 
     /**
