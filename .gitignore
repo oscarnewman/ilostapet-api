@@ -5,6 +5,5 @@ Homestead.yaml
 Homestead.json
 .env
 
-bootstrap/cache/*
 .env.*.php
 .env.php
