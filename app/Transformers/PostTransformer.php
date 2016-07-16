@@ -29,11 +29,9 @@ class PostTransformer extends TransformerAbstract
         return [
             'id'        => (int) $post->hash_id,
             'type'      => $post->type,
-            'location'  => [
-                'address'   => $post->address,
-                'lat'       => $post->lat,
-                'lng'       => $post->lng,
-            ],
+            'address'   => $post->address,
+            'lat'       => $post->lat,
+            'lng'       => $post->lng,
             'created_at'    => (string) $post->created_at,
             'updated_at'    => (string) $post->updated_at,
         ];
