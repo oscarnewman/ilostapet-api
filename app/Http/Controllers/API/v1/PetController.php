@@ -66,7 +66,7 @@ class PetController extends BaseAPIController
             }
         }
 
-        return $this->response->created(route('api.pets.show', ['id' => $pet->hash_id]));
+        return $this->response->created(route('pets.show', ['id' => $pet->hash_id]));
     }
 
     /**
@@ -123,7 +123,7 @@ class PetController extends BaseAPIController
             }
         }
 
-        return $this->response->created(route('api.pets.show', ['id' => $pet->hash_id]));
+        return $this->response->created(route('pets.show', ['id' => $pet->hash_id]));
     }
 
     /**

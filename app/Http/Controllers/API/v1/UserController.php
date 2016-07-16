@@ -40,7 +40,7 @@ class UserController extends BaseAPIController
         if (!$user = User::create($input)) {
             return $this->response->errorInternal('Error creating user');
         }
-        return $this->response->created(route('api.users.show', ['id' => $user->hash_id]));
+        return $this->response->created(route('users.show', ['id' => $user->hash_id]));
     }
 
     /**
