@@ -87,7 +87,7 @@ class PostController extends BaseAPIController
             }
         }
 
-        return $this->response->created(route('api.posts.show', ['id' => $post->hash_id]));
+        return $this->response->created(route('posts.show', ['id' => $post->hash_id]));
     }
 
     /**
