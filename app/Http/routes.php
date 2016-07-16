@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['namespace' => 'App\Http\Controllers\API\v1'], function ($api) {
+$api->version('v1', ['namespace' => 'App\Http\Controllers\API\v1', 'middleware' => 'cors'], function ($api) {
     $api->resource('/posts', 'PostController');
     $api->resource('/pets', 'PetController');
     $api->resource('/users', 'UserController', ['only' => ['store', 'show', 'update', 'destroy']]);
