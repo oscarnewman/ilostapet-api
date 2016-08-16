@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HashIDModel;
 
-class ContactInfo extends Model
+class Contact extends Model
 {
     use HashIDModel;
 

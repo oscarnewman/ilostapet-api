@@ -45,8 +45,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function contactInfo() {
-        return $this->hasMany(ContactInfo::class);
+    public function contact() {
+        return $this->hasMany(Contact::class);
     }
 
 }

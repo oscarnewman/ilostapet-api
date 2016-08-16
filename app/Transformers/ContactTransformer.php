@@ -2,17 +2,17 @@
 
 namespace App\Transformers;
 
-use App\ContactInfo;
+use App\Contact;
 use League\Fractal\TransformerAbstract;
 
-class ContactInfoTransformer extends TransformerAbstract
+class ContactTransformer extends TransformerAbstract
 {
     /**
      * Turn this item object into a generic array
      *
      * @return array
      */
-    public function transform(ContactInfo $contact)
+    public function transform(Contact $contact)
     {
         return [
             'id'    => (int) $contact->hash_id,

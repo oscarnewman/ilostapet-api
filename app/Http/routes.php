@@ -1,6 +1,8 @@
-ost
 <?php
-
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT');
+header("Access-Control-Allow-Headers: Authorization, X-Requested-With,  Content-Type, Accept");
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -26,7 +28,7 @@ Route::get('/', function () {
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['namespace' => 'App\Http\Controllers\API\v1', 'middleware' => 'cors'], function ($api) {
+$api->version('v1', ['namespace' => 'App\Http\Controllers\API\v1'], function ($api) {
     $api->resource('/posts', 'PostController');
     $api->resource('/pets', 'PetController');
     $api->resource('/users', 'UserController', ['only' => ['store', 'show', 'update', 'destroy']]);

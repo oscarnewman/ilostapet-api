@@ -16,7 +16,7 @@ class PostTransformer extends TransformerAbstract
      */
     protected $defaultIncludes = [
         'pet',
-        'contactInfo'
+        'contact'
     ];
 
     /**
@@ -53,10 +53,10 @@ class PostTransformer extends TransformerAbstract
      * Include Contact Info
      * @return Leage\Fractal\ItemResource
      */
-    public function includeContactInfo(Post $post) {
-        $contact_info = $post->contactInfo;
+    public function includeContact(Post $post) {
+        $contact = $post->contact;
 
-        return $this->collection($contact_info, new ContactInfoTransformer());
+        return $this->collection($contact, new ContactTransformer());
     }
 
 

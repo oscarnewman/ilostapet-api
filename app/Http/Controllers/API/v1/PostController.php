@@ -29,8 +29,8 @@ class PostController extends BaseAPIController
      */
     public function index()
     {
-        $posts = Post::paginate(20);
-        return $this->response->paginator($posts, new PostTransformer, ['key' => 'posts']);
+        $posts = Post::paginate(3);
+        return $this->response->paginator($posts, new PostTransformer, ['key' => 'data']);
     }
 
     /**
@@ -74,7 +74,7 @@ class PostController extends BaseAPIController
         if($request->has('phones')) {
             foreach($request->input('phones') as $phone) {
                 if($phone == "") break;
-                $post->contactInfo()->create([
+                $post->contact()->create([
                     'value' => $phone
                 ]);
             }
@@ -147,13 +147,13 @@ class PostController extends BaseAPIController
 
         if($request->has('phones')) {
             // Remvoe old phone values
-            $post->contactInfo()->map(function($item, $key) {
+            $post->contact()->map(function($item, $key) {
                 $item->delete();
             });
 
             foreach($request->input('phones') as $phone) {
                 if($phone == "") break;
-                $post->contactInfo()->create([
+                $post->contact()->create([
                     'value' => $phone
                 ]);
             }
